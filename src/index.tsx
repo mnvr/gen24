@@ -10,7 +10,7 @@ import * as C from "./components";
 import { sketch } from "./cover";
 import { days, type Day } from "./days";
 
-const Link: React.FC<React.PropsWithChildren> = ({ children }) => (
+export const Link: React.FC<React.PropsWithChildren> = ({ children }) => (
     <div>{children}</div>
 );
 
@@ -75,7 +75,7 @@ const Description2: React.FC = () => {
 };
 
 const DayList: React.FC = () => {
-    const dayPreviewImages = useDayPreviewImages();
+    // const dayPreviewImages = useDayPreviewImages();
     const isDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
     const withColorAdjustment = (day: Day): Day => {
@@ -89,7 +89,7 @@ const DayList: React.FC = () => {
                 <li key={i}>
                     <DayCard
                         day={withColorAdjustment(day)}
-                        previewImageData={dayPreviewImages[day.day]}
+                        // previewImageData={dayPreviewImages[day.day]}
                         isDarkMode={isDarkMode}
                     />
                 </li>

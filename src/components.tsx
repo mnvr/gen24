@@ -1,13 +1,10 @@
 import { type P5WrapperProps } from "@p5-wrapper/react";
-import { ELink } from "components/ExternalLink";
-import { LinkStyleUnderlined } from "components/LinkStyles";
-import { Link } from "gatsby";
-import { useMediaQuery } from "hooks/use-media-query";
-import { Signoff } from "layouts/text";
-import ReactP5WrapperWithFade from "p5/ReactP5WrapperWithFade";
+import { Link } from "./index";
+import { useMediaQuery } from "./utils/use-media-query";
+import ReactP5WrapperWithFade from "./p5/ReactP5WrapperWithFade";
 import * as React from "react";
 import styled from "styled-components";
-import { zeroPad2 } from "utils/string";
+import { zeroPad2 } from "./utils/string";
 
 interface DayProps {
     day?: number;
@@ -33,6 +30,42 @@ export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
             </Description>
             <Footer day={day} />
         </Layout_>
+    );
+};
+
+/**
+ * Author and date in subdued, small text.
+ *
+ * Designed for use at bottom of the page, after the text content.
+ */
+export const Signoff: React.FC = () => {
+    return (
+        <Signoff_>
+            <SignoffContents />
+        </Signoff_>
+    );
+};
+
+const Signoff_ = styled.div`
+    margin-block-start: 4.5rem;
+    line-height: 27px;
+    color: var(--mrmr-secondary-color);
+`;
+
+export const SignoffContents: React.FC<React.HTMLAttributes<HTMLDivElement>> = (
+    props
+) => {
+    // const page = ensure(React.useContext(BuildTimePageContext));
+    const formattedSignoffDate = "Jan 2024";
+
+    return (
+        <div {...props}>
+            <small>
+                Manav Rathi
+                <br />
+                {formattedSignoffDate}
+            </small>
+        </div>
     );
 };
 
@@ -193,9 +226,6 @@ const Footer_ = styled.div`
     }
 `;
 
-/** Rexport to avoiding requiring another import in the MDX file. */
-export { ELink };
-
 interface SourceLinkProps {
     day: number;
 }
@@ -218,3 +248,94 @@ export const SourceLink: React.FC<SourceLinkProps> = ({ day }) => {
 const SourceLink_ = styled.p`
     margin-block-start: 2rem;
 `;
+
+/**
+ * A container that styles links (<a> elements) within its children to have a
+ * yellow hover background.
+ */
+export const LinkStyleHover = styled.div`
+    a:hover {
+        background-color: hsl(60, 100%, 85%);
+        color: oklch(40% 0 0);
+        @media (prefers-color-scheme: dark) {
+            background-color: yellow;
+            color: oklch(20% 0 0);
+        }
+    }
+`;
+
+/**
+ * A container that styles links (<a> elements) within its children to behave
+ * like "old-school" HTML links.
+ *
+ * - Links will have a blue underline. Visited links will have a purple
+ *   underline.
+ *
+ * - Hover state will show a yellow background.
+ */
+export const LinkStyleUnderlined = styled(LinkStyleHover)`
+    a {
+        text-decoration: none;
+        border-bottom: 1px solid blue;
+        font-weight: 500;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        a {
+            border-bottom-color: royalblue;
+        }
+    }
+
+    a:visited {
+        border-bottom-color: purple;
+    }
+
+    a:hover {
+        border-bottom-color: transparent;
+    }
+`;
+
+// import React from "react";
+// import { ImArrowUpRight2 } from "react-icons/im";
+// import { RxArrowTopRight } from "react-icons/rx";
+// import styled from "styled-components";
+
+/**
+ * A link that opens in an new tab
+ *
+ * @see also {@link ExternalLinkWithIcon}.
+ * */
+export const ExternalLink: React.FC<
+    React.PropsWithChildren<React.AnchorHTMLAttributes<HTMLAnchorElement>>
+> = ({ children, ...props }) => {
+    // Newer browsers implicitly add rel="noopener" for target="_blank", but
+    // support is still not 100% though and it's easy to add explicitly, so
+    // might as well.
+    return (
+        <a target="_blank" rel="noopener" {...props}>
+            {children}
+        </a>
+    );
+};
+
+/**
+ * A link that opens in an new tab, with an indicator.
+ *
+ * This is a variant of {@link ExternalLink} that shows an outward (top right)
+ * facing arrow icon after the children to indicate that the link will open in a
+ * new tab.
+ *
+ * There is also a shorter alias, {@link ELink}.
+ * */
+export const ExternalLinkWithIcon: React.FC<
+    React.PropsWithChildren<React.AnchorHTMLAttributes<HTMLAnchorElement>>
+> = ({ children, ...props }) => {
+    return (
+        <a target="_blank" rel="noopener" {...props}>
+            {children}➚ {/* <RxArrowTopRight /> */}
+        </a>
+    );
+};
+
+/** An alias for {@link ExternalLinkWithIcon} */
+export const ELink = ExternalLinkWithIcon;

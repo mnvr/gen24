@@ -404,7 +404,7 @@ const defaultGridShader = <S>({ p5 }: GridShaderParams<S>) => {
  * function.
  */
 type GridSketchProps = SketchProps & {
-    /** True if ``@media (prefers-color-scheme: dark)` is true */
+    /** True when `@media (prefers-color-scheme: dark)`. */
     isDarkMode?: boolean;
 };
 

@@ -1,4 +1,4 @@
-import { ensure } from "utils/ensure";
+import { ensure } from "./utils/ensure";
 import { type CellCoordinate, type GridSize } from "./grid";
 
 /**
@@ -113,7 +113,7 @@ export const combineGlyphs = (g1: Glyph, g2: Glyph): Glyph => {
     if (rowCount !== g2.size.rowCount) {
         const gs = JSON.stringify([g1, g2]);
         throw new Error(
-            `Attempting to combine two glyphs that do not have the same height. The glyphs were ${gs}`,
+            `Attempting to combine two glyphs that do not have the same height. The glyphs were ${gs}`
         );
     }
 
@@ -143,11 +143,11 @@ export const combineGlyphs = (g1: Glyph, g2: Glyph): Glyph => {
 export const makeGlyph = (c1: string, c2: string): Glyph =>
     combineGlyphs(
         parseGlyph(ensure(glyphStringForCharacter[c1])),
-        parseGlyph(ensure(glyphStringForCharacter[c2])),
+        parseGlyph(ensure(glyphStringForCharacter[c2]))
     );
 
 /** Return true if the matrix position at the given glyph coordinate is lit */
 export const isGlyphCoordinateLit = (
     { lines }: Glyph,
-    { row, col }: CellCoordinate,
+    { row, col }: CellCoordinate
 ) => lines[row]![col]! !== ".";

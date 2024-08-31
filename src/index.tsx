@@ -1,13 +1,18 @@
-import { useDayPreviewImages } from "components/gen24/preview-images";
-import { Link } from "gatsby";
-import { getSrc, type ImageDataLike } from "gatsby-plugin-image";
-import { useMediaQuery } from "hooks/use-media-query";
+// import { useDayPreviewImages } from "components/gen24/preview-images";
+// import { Link } from "gatsby";
+// import { getSrc, type ImageDataLike } from "gatsby-plugin-image";
+import { useMediaQuery } from "./utils/use-media-query";
 import * as React from "react";
-import { HiOutlineChevronRight } from "react-icons/hi";
+// TODO
+// import { HiOutlineChevronRight } from "react-icons/hi";
 import styled from "styled-components";
 import * as C from "./components";
 import { sketch } from "./cover";
 import { days, type Day } from "./days";
+
+const Link: React.FC<React.PropsWithChildren> = ({ children }) => (
+    <div>{children}</div>
+);
 
 export const Content: React.FC = () => {
     return (
@@ -125,7 +130,7 @@ const DayCard: React.FC<DayCardProps> = ({ day, previewImageData }) => {
         <Link to={`${day.day}`}>
             <DayCard_ color={day.color} $previewImageSrc={previewImageSrc}>
                 <DayDescription {...day} />
-                <HiOutlineChevronRight />
+                {/* <HiOutlineChevronRight /> */}»
             </DayCard_>
         </Link>
     );
@@ -139,8 +144,7 @@ interface DayCardProps_ {
 const DayCard_ = styled.div<DayCardProps_>`
     border: 1px solid ${(props) => props.color};
 
-    background-image:
-        linear-gradient(
+    background-image: linear-gradient(
             to right,
             var(--mrmr-background-color) 50%,
             transparent

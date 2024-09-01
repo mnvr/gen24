@@ -55,7 +55,7 @@ const Title: React.FC<{ n?: number }> = ({ n }) => (
 const Footer: React.FC = () => (
     <Footer_>
         <p>
-            <a href="/">Back</a>
+            <a href="/gen24/">Back</a>
         </p>
     </Footer_>
 );

@@ -1,5 +1,5 @@
 import { type P5WrapperProps } from "@p5-wrapper/react";
-import { Link } from "./index";
+import { Link } from "./index"; // TODO
 import { useMediaQuery } from "./utils/use-media-query";
 import ReactP5WrapperWithFade from "./p5/ReactP5WrapperWithFade";
 import * as React from "react";
@@ -33,15 +33,14 @@ export const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
     );
 };
 
-/**
- * Author and date in subdued, small text.
- *
- * Designed for use at bottom of the page, after the text content.
- */
 export const Signoff: React.FC = () => {
     return (
         <Signoff_>
-            <SignoffContents />
+            <small>
+                Manav Rathi
+                <br />
+                Jan 2024
+            </small>
         </Signoff_>
     );
 };
@@ -51,23 +50,6 @@ const Signoff_ = styled.div`
     line-height: 27px;
     color: var(--mrmr-secondary-color);
 `;
-
-export const SignoffContents: React.FC<React.HTMLAttributes<HTMLDivElement>> = (
-    props
-) => {
-    // const page = ensure(React.useContext(BuildTimePageContext));
-    const formattedSignoffDate = "Jan 2024";
-
-    return (
-        <div {...props}>
-            <small>
-                Manav Rathi
-                <br />
-                {formattedSignoffDate}
-            </small>
-        </div>
-    );
-};
 
 const Layout_ = styled.div`
     display: flex;
@@ -86,7 +68,7 @@ export const FirstFold = styled.div`
 const Title: React.FC<DayProps> = ({ day }) => (
     <Banner
         left="GEN 24"
-        right={day !== undefined ? `DAY ${zeroPad2(day)}` : "BEGIN"}
+        right={day !== undefined ? `DAY ${zeroPad2(day)}` : ""}
     />
 );
 
@@ -191,7 +173,7 @@ const Description_ = styled.div`
  * The {@link Description} for some of the sketches needs a bit more space at
  * the top to separate it out from the sketch, especially when the sketch has a
  * diffuse boundary. This is a convenience component to do that, it increases
- * the margin-block from "1rem" (default for mobiles) to "2rem" always.
+ * the margin-block from 1rem (default for mobile sized screens) to 2rem always.
  */
 export const DescriptionExtraMarginTop = styled.div`
     margin-block: 2rem;
@@ -206,9 +188,6 @@ const Footer: React.FC<DayProps> = ({ day }) => {
                         <Link to="/gen24">All days</Link>
                     </p>
                 )}
-                <p>
-                    <Link to="/">Home</Link>
-                </p>
             </Footer_>
         </LinkStyleUnderlined>
     );
@@ -233,11 +212,11 @@ interface SourceLinkProps {
 /**
  * A link to the source code – "sketch.tsx" – for the given day.
  */
-export const SourceLink: React.FC<SourceLinkProps> = ({ day }) => {
+const SourceLink: React.FC<SourceLinkProps> = ({ day }) => {
     return (
         <SourceLink_>
             <ELink
-                href={`https://github.com/mnvr/mrmr.io/blob/main/pages/gen24/${day}/sketch.tsx`}
+                href={`https://github.com/mnvr/gen24/blob/main/pages/${day}/sketch.tsx`}
             >
                 Source code for the sketch
             </ELink>
@@ -250,21 +229,6 @@ const SourceLink_ = styled.p`
 `;
 
 /**
- * A container that styles links (<a> elements) within its children to have a
- * yellow hover background.
- */
-export const LinkStyleHover = styled.div`
-    a:hover {
-        background-color: hsl(60, 100%, 85%);
-        color: oklch(40% 0 0);
-        @media (prefers-color-scheme: dark) {
-            background-color: yellow;
-            color: oklch(20% 0 0);
-        }
-    }
-`;
-
-/**
  * A container that styles links (<a> elements) within its children to behave
  * like "old-school" HTML links.
  *
@@ -273,7 +237,7 @@ export const LinkStyleHover = styled.div`
  *
  * - Hover state will show a yellow background.
  */
-export const LinkStyleUnderlined = styled(LinkStyleHover)`
+export const LinkStyleUnderlined = styled.div`
     a {
         text-decoration: none;
         border-bottom: 1px solid blue;
@@ -291,51 +255,29 @@ export const LinkStyleUnderlined = styled(LinkStyleHover)`
     }
 
     a:hover {
+        background-color: hsl(60, 100%, 85%);
+        color: oklch(40% 0 0);
+        @media (prefers-color-scheme: dark) {
+            background-color: yellow;
+            color: oklch(20% 0 0);
+        }
+    }
+
+    a:hover {
         border-bottom-color: transparent;
     }
 `;
 
-// import React from "react";
-// import { ImArrowUpRight2 } from "react-icons/im";
-// import { RxArrowTopRight } from "react-icons/rx";
-// import styled from "styled-components";
-
-/**
- * A link that opens in an new tab
- *
- * @see also {@link ExternalLinkWithIcon}.
- * */
-export const ExternalLink: React.FC<
-    React.PropsWithChildren<React.AnchorHTMLAttributes<HTMLAnchorElement>>
-> = ({ children, ...props }) => {
-    // Newer browsers implicitly add rel="noopener" for target="_blank", but
-    // support is still not 100% though and it's easy to add explicitly, so
-    // might as well.
-    return (
-        <a target="_blank" rel="noopener" {...props}>
-            {children}
-        </a>
-    );
-};
-
-/**
- * A link that opens in an new tab, with an indicator.
- *
- * This is a variant of {@link ExternalLink} that shows an outward (top right)
- * facing arrow icon after the children to indicate that the link will open in a
- * new tab.
- *
- * There is also a shorter alias, {@link ELink}.
- * */
-export const ExternalLinkWithIcon: React.FC<
+/** A link that opens in an new tab, with an indicator. */
+export const ELink: React.FC<
     React.PropsWithChildren<React.AnchorHTMLAttributes<HTMLAnchorElement>>
 > = ({ children, ...props }) => {
     return (
         <a target="_blank" rel="noopener" {...props}>
-            {children}↗ {/* <RxArrowTopRight /> */}
+            {children}{" "}
+            <sup>
+                <small>↗</small>
+            </sup>
         </a>
     );
 };
-
-/** An alias for {@link ExternalLinkWithIcon} */
-export const ELink = ExternalLinkWithIcon;

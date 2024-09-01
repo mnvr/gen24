@@ -11,10 +11,10 @@ import { sketch } from "./cover";
 import { days, type Day } from "./days";
 
 export const Link: React.FC<React.PropsWithChildren> = ({ children }) => (
-    <div>{children}</div>
+    <span>{children}</span>
 );
 
-export const Content: React.FC = () => {
+export const Index: React.FC = () => {
     return (
         <C.Layout sketch={sketch}>
             <Description />
@@ -38,7 +38,7 @@ const Description: React.FC = () => {
             </p>
             <p>
                 I'm using p5.js to make these sketches, and the{" "}
-                <C.ELink href="https://github.com/mnvr/mrmr.io/tree/main/pages/gen24">
+                <C.ELink href="https://github.com/mnvr/gen24/tree/main/pages/">
                     source code for all of these is available on GitHub
                 </C.ELink>
                 .

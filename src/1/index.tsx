@@ -1,10 +1,10 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+// import { StrictMode } from "react";
+// import { createRoot } from "react-dom/client";
 // import "../index.css";
 // import * as C from "../components";
 // import { sketch } from "./sketch";
 
-const Page = () => {
+export const Day1 = () => {
     return <h1>Hello world</h1>;
 };
 
@@ -26,8 +26,8 @@ const Page = () => {
 //     </C.Layout>;
 // };
 
-createRoot(document.getElementById("root")!).render(
-    <StrictMode>
-        <Page />
-    </StrictMode>
-);
+// createRoot(document.getElementById("root")!).render(
+//     <StrictMode>
+//         <Page />
+//     </StrictMode>
+// );

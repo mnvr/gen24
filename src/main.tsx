@@ -28,7 +28,7 @@ const router = createBrowserRouter(
         { path: "/18", element: <Day18 /> },
         { path: "/25", element: <Day25 /> },
         { path: "/cover", element: <Cover /> },
-        { path: "/*", element: <Index /> },
+        { path: "/", element: <Index />, errorElement: <Index /> },
     ],
     { basename: "/gen24" }
 );

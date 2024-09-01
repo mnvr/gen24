@@ -1,12 +1,8 @@
-// import { useDayPreviewImages } from "components/gen24/preview-images";
 // import { Link } from "gatsby";
-// import { getSrc, type ImageDataLike } from "gatsby-plugin-image";
 import { useMediaQuery } from "./utils/use-media-query";
 import * as React from "react";
-// TODO
-// import { HiOutlineChevronRight } from "react-icons/hi";
 import styled from "styled-components";
-import * as C from "./components";
+import { Layout, ELink } from "./components";
 import { sketch } from "./cover";
 import { days, type Day } from "./days";
 
@@ -16,11 +12,11 @@ export const Link: React.FC<React.PropsWithChildren> = ({ children }) => (
 
 export const Index: React.FC = () => {
     return (
-        <C.Layout sketch={sketch}>
+        <Layout sketch={sketch}>
             <Description />
             <DayList />
             <Description2 />
-        </C.Layout>
+        </Layout>
     );
 };
 
@@ -38,9 +34,9 @@ const Description: React.FC = () => {
             </p>
             <p>
                 I'm using p5.js to make these sketches, and the{" "}
-                <C.ELink href="https://github.com/mnvr/gen24/tree/main/pages/">
+                <ELink href="https://github.com/mnvr/gen24">
                     source code for all of these is available on GitHub
-                </C.ELink>
+                </ELink>
                 .
             </p>
         </>
@@ -52,13 +48,13 @@ const Description2: React.FC = () => {
         <>
             <p>
                 For <b>Day 14</b>, I made a{" "}
-                <C.ELink href="https://mnvr.github.io/gm1k">
+                <ELink href="https://mnvr.github.io/gm1k">
                     song in 410 bytes of JS
-                </C.ELink>
+                </ELink>
                 . For <b>Day 31</b>, I made another one{" "}
-                <C.ELink href="https://mnvr.github.io/gm1k/e">
+                <ELink href="https://mnvr.github.io/gm1k/e">
                     using Euclidean rhythms
-                </C.ELink>
+                </ELink>
                 .
             </p>
             <p>

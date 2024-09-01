@@ -1,14 +1,9 @@
-// import { Link } from "gatsby";
 import { useMediaQuery } from "./utils/use-media-query";
 import * as React from "react";
 import styled from "styled-components";
 import { Layout, ELink } from "./components";
 import { sketch } from "./cover";
 import { days, type Day } from "./days";
-
-export const Link: React.FC<React.PropsWithChildren> = ({ children }) => (
-    <span>{children}</span>
-);
 
 export const Index: React.FC = () => {
     return (
@@ -149,10 +144,6 @@ const DayCard_ = styled.div<DayCardProps_>`
     display: flex;
     align-items: center;
     gap: 0.7rem;
-
-    svg {
-        color: var(--mrmr-secondary-color);
-    }
 
     &:hover {
         color: ${(props) => props.color};

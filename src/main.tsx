@@ -14,6 +14,10 @@ import { Day11 } from "./11/index.tsx";
 import { Day18 } from "./18/index.tsx";
 import { Day25 } from "./25/index.tsx";
 
+// We use react-router, since Vite's MPA support is patchy. But react-router's
+// Link causes problems with scroll going all over the place. To keep things
+// simple, we take the worst of both worlds. A SPA with HTML navigation.
+
 const router = createBrowserRouter([
     { path: "/1", element: <Day1 /> },
     { path: "/2", element: <Day2 /> },

@@ -165,7 +165,7 @@ const drawGrid: GridShader<State> = ({ p5, grid, state }) => {
     return newState;
 };
 
-const drawCell: CellShader<State> = ({ p5, x, y, s, w, h, cell, state }) => {
+const drawCell: CellShader<State> = ({ p5, x, y, w, h, cell, state }) => {
     const { cellState } = ensure(state);
 
     const cs = cellState[cell.index];

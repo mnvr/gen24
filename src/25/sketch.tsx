@@ -58,18 +58,6 @@ const drawGrid: GridShader<State> = ({ p5, grid, cs }) => {
     return makeState();
 };
 
-/**
- * An unused, simple implementation that demonstrates the basic gist of what
- * we're trying to do
- */
-const drawCell0: CellShader<State> = ({ p5, x, y, s }) => {
-    p5.beginShape();
-    p5.vertex(x + s / 2, y);
-    p5.bezierVertex(x, y + s / 2, x, y + s / 2, x + s / 2, y + s);
-    p5.bezierVertex(x + s, y + s / 2, x + s, y + s / 2, x + s / 2, y);
-    p5.endShape();
-};
-
 /** A convenience alias for two x and y pixel coordinates that define a point */
 type Pt = [x: number, y: number];
 

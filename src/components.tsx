@@ -4,7 +4,6 @@ import { useMediaQuery } from "./utils/use-media-query";
 import ReactP5WrapperWithFade from "./p5/ReactP5WrapperWithFade";
 import * as React from "react";
 import styled from "styled-components";
-import { zeroPad2 } from "./utils/string";
 
 interface DayProps {
     day?: number;
@@ -68,7 +67,9 @@ export const FirstFold = styled.div`
 const Title: React.FC<DayProps> = ({ day }) => (
     <Banner
         left="GEN 24"
-        right={day !== undefined ? `DAY ${zeroPad2(day)}` : ""}
+        right={
+            day !== undefined ? `DAY ${day.toString().padStart(2, "0")}` : ""
+        }
     />
 );
 

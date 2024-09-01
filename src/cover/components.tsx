@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import { Signoff } from "layouts/text";
 import * as React from "react";
 import styled from "styled-components";
-import { zeroPad2 } from "utils/string";
 import { Banner, Description, FirstFold, SketchContainer } from "../components";
 
 export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
@@ -52,7 +51,9 @@ const Demo_ = styled.div`
 const Title: React.FC<{ n?: number }> = ({ n }) => (
     <Banner
         left="GRD 24"
-        right={n === undefined ? "COVER" : `DEX ${zeroPad2(n)}`}
+        right={
+            n === undefined ? "COVER" : `DEX ${n.toString().padStart(2, "0")}`
+        }
     />
 );
 

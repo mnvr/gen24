@@ -10,8 +10,6 @@ import * as C from "./components";
 import { sketch } from "./cover";
 import { days, type Day } from "./days";
 
-import p1 from "./1/preview.png";
-
 export const Link: React.FC<React.PropsWithChildren> = ({ children }) => (
     <span>{children}</span>
 );
@@ -77,7 +75,6 @@ const Description2: React.FC = () => {
 };
 
 const DayList: React.FC = () => {
-    // const dayPreviewImages = useDayPreviewImages();
     const isDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
     const withColorAdjustment = (day: Day): Day => {
@@ -91,9 +88,7 @@ const DayList: React.FC = () => {
                 <li key={i}>
                     <DayCard
                         day={withColorAdjustment(day)}
-                        // previewImageData={dayPreviewImages[day.day]}
-                        previewImageData={p1}
-                        isDarkMode={isDarkMode}
+                        previewImage={day.previewImage}
                     />
                 </li>
             ))}
@@ -120,18 +115,13 @@ const DayUL = styled.ul`
 
 type DayCardProps = {
     day: Day;
-    previewImage?: ImageDataLike;
-    isDarkMode: boolean;
+    previewImage: string;
 };
 
 const DayCard: React.FC<DayCardProps> = ({ day, previewImage }) => {
-    // const previewImageSrc = previewImageData
-    // ? getSrc(previewImageData)
-    // : undefined;
-
     return (
         <Link to={`${day.day}`}>
-            <DayCard_ color={day.color} $previewImageSrc={p1}>
+            <DayCard_ color={day.color} $previewImage={previewImage}>
                 <DayDescription {...day} /> »
             </DayCard_>
         </Link>
@@ -140,7 +130,7 @@ const DayCard: React.FC<DayCardProps> = ({ day, previewImage }) => {
 
 interface DayCardProps_ {
     color: string;
-    $previewImageSrc?: string;
+    $previewImage: string;
 }
 
 const DayCard_ = styled.div<DayCardProps_>`
@@ -149,8 +139,7 @@ const DayCard_ = styled.div<DayCardProps_>`
             var(--mrmr-background-color) 50%,
             transparent
         ),
-        /* Nothing seems to break if url is undefined */
-            url(${(props) => props.$previewImageSrc});
+        url(${(props) => props.$previewImage});
     background-position: top right;
     background-size: auto 101px;
 

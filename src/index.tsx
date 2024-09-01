@@ -10,6 +10,8 @@ import * as C from "./components";
 import { sketch } from "./cover";
 import { days, type Day } from "./days";
 
+import p1 from "./1/preview.png";
+
 export const Link: React.FC<React.PropsWithChildren> = ({ children }) => (
     <span>{children}</span>
 );
@@ -90,6 +92,7 @@ const DayList: React.FC = () => {
                     <DayCard
                         day={withColorAdjustment(day)}
                         // previewImageData={dayPreviewImages[day.day]}
+                        previewImageData={p1}
                         isDarkMode={isDarkMode}
                     />
                 </li>
@@ -117,20 +120,19 @@ const DayUL = styled.ul`
 
 type DayCardProps = {
     day: Day;
-    previewImageData?: ImageDataLike;
+    previewImage?: ImageDataLike;
     isDarkMode: boolean;
 };
 
-const DayCard: React.FC<DayCardProps> = ({ day, previewImageData }) => {
-    const previewImageSrc = previewImageData
-        ? getSrc(previewImageData)
-        : undefined;
+const DayCard: React.FC<DayCardProps> = ({ day, previewImage }) => {
+    // const previewImageSrc = previewImageData
+    // ? getSrc(previewImageData)
+    // : undefined;
 
     return (
         <Link to={`${day.day}`}>
-            <DayCard_ color={day.color} $previewImageSrc={previewImageSrc}>
-                <DayDescription {...day} />
-                {/* <HiOutlineChevronRight /> */}»
+            <DayCard_ color={day.color} $previewImageSrc={p1}>
+                <DayDescription {...day} /> »
             </DayCard_>
         </Link>
     );
@@ -142,8 +144,6 @@ interface DayCardProps_ {
 }
 
 const DayCard_ = styled.div<DayCardProps_>`
-    border: 1px solid ${(props) => props.color};
-
     background-image: linear-gradient(
             to right,
             var(--mrmr-background-color) 50%,
@@ -152,11 +152,12 @@ const DayCard_ = styled.div<DayCardProps_>`
         /* Nothing seems to break if url is undefined */
             url(${(props) => props.$previewImageSrc});
     background-position: top right;
+    background-size: auto 101px;
 
-    box-sizing: border-box;
-    /* The fixed height of the preview images (in the Static GraphQL query
-     * defined in 'preview-images.tsx') is 101px. Add 2px for the borders. */
+    /* The fixed height of the background is 101px. Add 2px for the borders. */
     min-height: 103px;
+    box-sizing: border-box;
+    border: 1px solid ${(props) => props.color};
 
     padding-inline: 1.5rem;
 

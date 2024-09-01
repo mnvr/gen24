@@ -59,9 +59,9 @@ const Description2: React.FC = () => {
             </p>
             <p>
                 I also created{" "}
-                <Link to="cover">
+                <a href="cover">
                     a tutorial to show how much can be done just by basic grids
-                </Link>{" "}
+                </a>{" "}
                 - I start with the simplest possible grid, and derive the cover
                 art that you see at the top.
             </p>
@@ -116,11 +116,11 @@ type DayCardProps = {
 
 const DayCard: React.FC<DayCardProps> = ({ day, previewImage }) => {
     return (
-        <Link to={`${day.day}`}>
+        <a href={`${day.day}`}>
             <DayCard_ color={day.color} $previewImage={previewImage}>
                 <DayDescription {...day} /> »
             </DayCard_>
-        </Link>
+        </a>
     );
 };
 

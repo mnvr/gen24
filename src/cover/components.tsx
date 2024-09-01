@@ -1,6 +1,4 @@
 import { type P5WrapperProps } from "@p5-wrapper/react";
-import { Link } from "gatsby";
-import { Signoff } from "layouts/text";
 import * as React from "react";
 import styled from "styled-components";
 import { Banner, Description, FirstFold, SketchContainer } from "../components";
@@ -9,9 +7,6 @@ export const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
     return (
         <Layout_>
             {children}
-            <SignoffContainer>
-                <Signoff />
-            </SignoffContainer>
             <Footer />
         </Layout_>
     );
@@ -64,18 +59,13 @@ const SignoffContainer = styled.div`
     }
 `;
 
-const Footer: React.FC = () => {
-    return (
-        <Footer_>
-            <p>
-                <Link to="/gen24">Genuary 24</Link>
-            </p>
-            <p>
-                <Link to="/">Home</Link>
-            </p>
-        </Footer_>
-    );
-};
+const Footer: React.FC = () => (
+    <Footer_>
+        <p>
+            <a href="/">Back</a>
+        </p>
+    </Footer_>
+);
 
 const Footer_ = styled.div`
     margin-block: 4rem;

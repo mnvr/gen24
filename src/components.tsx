@@ -175,7 +175,7 @@ const Footer: React.FC<DayProps> = ({ day }) => {
         <Footer_>
             {day !== undefined && (
                 <p>
-                    <Link to="/gen24">All days</Link>
+                    <a href="/">Back</a>
                 </p>
             )}
         </Footer_>

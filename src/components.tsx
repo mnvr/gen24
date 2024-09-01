@@ -332,7 +332,7 @@ export const ExternalLinkWithIcon: React.FC<
 > = ({ children, ...props }) => {
     return (
         <a target="_blank" rel="noopener" {...props}>
-            {children}➚ {/* <RxArrowTopRight /> */}
+            {children}↗ {/* <RxArrowTopRight /> */}
         </a>
     );
 };

@@ -118,17 +118,7 @@ const SketchContainer_ = styled.div`
     align-items: center; /* vertically */
 `;
 
-export const Description: React.FC<React.PropsWithChildren> = ({
-    children,
-}) => {
-    return (
-        <LinkStyleUnderlined>
-            <Description_>{children}</Description_>
-        </LinkStyleUnderlined>
-    );
-};
-
-const Description_ = styled.div`
+export const Description = styled.div`
     margin-block: 1rem;
     @media (min-width: 800px) {
         margin-block: 2rem;
@@ -181,15 +171,13 @@ export const DescriptionExtraMarginTop = styled.div`
 
 const Footer: React.FC<DayProps> = ({ day }) => {
     return (
-        <LinkStyleUnderlined>
-            <Footer_>
-                {day !== undefined && (
-                    <p>
-                        <Link to="/gen24">All days</Link>
-                    </p>
-                )}
-            </Footer_>
-        </LinkStyleUnderlined>
+        <Footer_>
+            {day !== undefined && (
+                <p>
+                    <Link to="/gen24">All days</Link>
+                </p>
+            )}
+        </Footer_>
     );
 };
 
@@ -226,46 +214,6 @@ const SourceLink: React.FC<SourceLinkProps> = ({ day }) => {
 
 const SourceLink_ = styled.p`
     margin-block-start: 2rem;
-`;
-
-/**
- * A container that styles links (<a> elements) within its children to behave
- * like "old-school" HTML links.
- *
- * - Links will have a blue underline. Visited links will have a purple
- *   underline.
- *
- * - Hover state will show a yellow background.
- */
-export const LinkStyleUnderlined = styled.div`
-    a {
-        text-decoration: none;
-        border-bottom: 1px solid blue;
-        font-weight: 500;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        a {
-            border-bottom-color: royalblue;
-        }
-    }
-
-    a:visited {
-        border-bottom-color: purple;
-    }
-
-    a:hover {
-        background-color: hsl(60, 100%, 85%);
-        color: oklch(40% 0 0);
-        @media (prefers-color-scheme: dark) {
-            background-color: yellow;
-            color: oklch(20% 0 0);
-        }
-    }
-
-    a:hover {
-        border-bottom-color: transparent;
-    }
 `;
 
 /** A link that opens in an new tab, with an indicator. */

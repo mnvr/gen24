@@ -1,5 +1,4 @@
 import { type P5WrapperProps } from "@p5-wrapper/react";
-import { LinkStyleUnderlined } from "components/LinkStyles";
 import { Link } from "gatsby";
 import { Signoff } from "layouts/text";
 import * as React from "react";
@@ -66,16 +65,14 @@ const SignoffContainer = styled.div`
 
 const Footer: React.FC = () => {
     return (
-        <LinkStyleUnderlined>
-            <Footer_>
-                <p>
-                    <Link to="/gen24">Genuary 24</Link>
-                </p>
-                <p>
-                    <Link to="/">Home</Link>
-                </p>
-            </Footer_>
-        </LinkStyleUnderlined>
+        <Footer_>
+            <p>
+                <Link to="/gen24">Genuary 24</Link>
+            </p>
+            <p>
+                <Link to="/">Home</Link>
+            </p>
+        </Footer_>
     );
 };
 

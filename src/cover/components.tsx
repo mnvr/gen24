@@ -52,13 +52,6 @@ const Title: React.FC<{ n?: number }> = ({ n }) => (
     />
 );
 
-const SignoffContainer = styled.div`
-    margin-block-start: -5rem;
-    @media (max-width: 900px) {
-        margin-inline: 1rem;
-    }
-`;
-
 const Footer: React.FC = () => (
     <Footer_>
         <p>
@@ -68,7 +61,7 @@ const Footer: React.FC = () => (
 );
 
 const Footer_ = styled.div`
-    margin-block: 4rem;
+    margin-block-end: 5rem;
     @media (max-width: 900px) {
         margin-inline: 1rem;
     }

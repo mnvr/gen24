@@ -1,5 +1,5 @@
 import { type P5WrapperProps } from "@p5-wrapper/react";
-import { Link } from "./index"; // TODO
+// import { Link } from "./index"; // TODO
 import { useMediaQuery } from "./utils/use-media-query";
 import ReactP5WrapperWithFade from "./p5/ReactP5WrapperWithFade";
 import * as React from "react";

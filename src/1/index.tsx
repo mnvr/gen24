@@ -13,8 +13,8 @@ export const Day1: React.FC = () => (
             </p>
 
             <p>
-                The prompt for today was _Particles_. The essence I've tried to
-                capture is <b>connections</b>.
+                The prompt for today was "Particles". The essence I've
+                tried to capture is <b>connections</b>.
             </p>
         </DescriptionExtraMarginTop>
     </Layout>

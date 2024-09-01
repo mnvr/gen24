@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, ELink } from "../components";
+import { Layout } from "../components";
 import { sketch } from "./sketch";
 
 export const Day18: React.FC = () => (

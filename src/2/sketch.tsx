@@ -1,8 +1,8 @@
 import { type P5CanvasInstance } from "@p5-wrapper/react";
 import type * as P5 from "p5";
-import { every } from "p5/every";
-import { ensure } from "utils/ensure";
-import { mod } from "utils/math";
+import { every } from "../p5/every";
+import { ensure } from "../utils/ensure";
+import { mod } from "../utils/math";
 import type { Cell, CellShader, Grid, GridShader } from "../grid";
 import { gridSketch } from "../grid";
 

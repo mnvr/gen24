@@ -1,6 +1,5 @@
-import { every } from "p5/every";
-import { assert } from "utils/assert";
-import { ensure } from "utils/ensure";
+import { every } from "../p5/every";
+import { ensure } from "../utils/ensure";
 import {
     cellIndex,
     gridSketch,
@@ -90,11 +89,10 @@ const nextZ = (z: number) => {
 
 const drawGrid: GridShader<State> = ({ p5, grid, state, env }) => {
     const cellIndexForZ = (z: number) => {
-        assert(z >= 0 && z <= 1);
         // Draw only in the safe area (i.e. exclude 1 cell from each boundary).
         const row = p5.floor(p5.map(z, 0, 1, 1, grid.rowCount - 1));
         const col = p5.floor(
-            p5.map(p5.fract(z * 10), 0, 1, 1, grid.colCount - 1),
+            p5.map(p5.fract(z * 10), 0, 1, 1, grid.colCount - 1)
         );
         return cellIndex({ row, col }, grid);
     };
@@ -117,7 +115,7 @@ const drawGrid: GridShader<State> = ({ p5, grid, state, env }) => {
     let cellFill: Record<number, number> = {};
     zs.forEach((z, i) => {
         cellFill[cellIndexForZ(z)] = colorForIntensity(
-            p5.constrain(i / 10, 0, 1),
+            p5.constrain(i / 10, 0, 1)
         );
     });
     // Special case for z itself. Comment it out for a sketch with a calmer

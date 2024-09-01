@@ -1,6 +1,5 @@
 import type { P5CanvasInstance } from "@p5-wrapper/react";
-import { assert } from "utils/assert";
-import { ensure } from "utils/ensure";
+import { ensure } from "../utils/ensure";
 import type { CellCoordinate, CellShader, Grid, GridShader } from "../grid";
 import { cellIndex, gridSketch, maybeCellIndex } from "../grid";
 
@@ -148,11 +147,6 @@ const makeState = (p5: P5CanvasInstance, grid: Grid): State => {
                 if (skip(col - 1)) cs = undefined;
                 if (skip(col)) cs = undefined;
             }
-
-            // Both of us being staggered is not going to happen in the current
-            // setup, as we manually specify the staggered rows and none of them
-            // are contiguous.
-            assert(!(sc && sp));
 
             if (cs) cellState[cellIndex({ row, col }, grid)] = cs;
         }

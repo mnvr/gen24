@@ -1,4 +1,4 @@
-import { ensure } from "utils/ensure";
+import { ensure } from "../utils/ensure";
 import type { CellShader, GridShader } from "../grid";
 import { cellIndex, gridSketch } from "../grid";
 

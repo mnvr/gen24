@@ -1,6 +1,6 @@
 import type { P5CanvasInstance } from "@p5-wrapper/react";
-import { every } from "p5/every";
-import { ensure } from "utils/ensure";
+import { every } from "../p5/every";
+import { ensure } from "../utils/ensure";
 import type { CellShader, Grid, GridShader, GridSize } from "../grid";
 import { cellIndex, gridSketch } from "../grid";
 import {
@@ -36,7 +36,7 @@ export const ensureEqualSizedGlyphs = (glyphs: Glyph[]) => {
         if (!areEqualSizes(glyph.size, glyphSize)) {
             const ss = JSON.stringify([glyph.size, glyphSize]);
             throw new Error(
-                `Unequal glyph sizes are not supported. The sizes were ${ss}`,
+                `Unequal glyph sizes are not supported. The sizes were ${ss}`
             );
         }
     }
@@ -113,7 +113,7 @@ const renderGlyphs = ({ p5, grid }: RenderGlyphsParams): State => {
         const sa = JSON.stringify(safeAreaSize);
         const md = JSON.stringify(glyphSize);
         throw new Error(
-            `Safe area ${sa} is not enough to contain the rendered display of size ${md}`,
+            `Safe area ${sa} is not enough to contain the rendered display of size ${md}`
         );
     }
 

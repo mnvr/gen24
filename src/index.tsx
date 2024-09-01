@@ -10,6 +10,7 @@ export const Link: React.FC<React.PropsWithChildren> = ({ children }) => (
     <span>{children}</span>
 );
 
+
 export const Index: React.FC = () => {
     return (
         <Layout sketch={sketch}>

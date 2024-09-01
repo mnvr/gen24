@@ -204,7 +204,7 @@ const SourceLink: React.FC<SourceLinkProps> = ({ day }) => {
     return (
         <SourceLink_>
             <ELink
-                href={`https://github.com/mnvr/gen24/blob/main/pages/${day}/sketch.tsx`}
+                href={`https://github.com/mnvr/gen24/blob/main/src/${day}/sketch.tsx`}
             >
                 Source code for the sketch
             </ELink>

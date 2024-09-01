@@ -1,3 +1,3 @@
-export const Day1 = () => {
+export const Page = () => {
     return <h1>Hello world</h1>;
 };
